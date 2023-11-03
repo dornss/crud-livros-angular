@@ -1,1 +1,41 @@
-<p>formulario works!</p>
+<div class="container">
+  <h1>Cadastro Livros</h1>
+  <div class="inputs">
+      <div class="row mb-3">
+          <div class="col-3">
+              <div class="mb-1">
+                  Nome
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="nome" name="nome">
+          </div>
+          <div class="col-3">
+              <div class="mb-1">
+                  Autor
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="autor" name="autor">
+          </div>
+          <div class="col-3">
+              <div class="mb-1">
+                  Gênero
+              </div>
+              <select class="form-control" [(ngModel)]="genero">
+                  <option value="Ação">Ação</option>
+                  <option value="Aventura">Aventura</option>
+                  <option value="Ficção">Ficção</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Outro">Outro</option>
+              </select>
+          </div>
+          <div class="col-3">
+              <div class="mb-1">
+                  Ano de Lançamento
+              </div>
+              <input type="number" class="form-control" [(ngModel)]="anoLancamento" name="anoLancamento">
+          </div>
+      </div>
+      <div class="d-flex flex-row-reverse mb-3">
+          <button class="btn btn-primary" (click)="adicionarLivro()">Adicionar Livro</button>
+      </div>
+  </div>
+</div>
