@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Cadastro Livros</h1>
+  <div class="inputs">
+      <div class="row mb-3">
+          <div class="col-3">
+              <div class="mb-1">
+                  Nome
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="nome" name="nome">
+          </div>
+          <div class="col-3">
+              <div class="mb-1">
+                  Autor
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="autor" name="autor">
+          </div>
+          <div class="col-3">
+              <div class="mb-1">
+                  Gênero
+              </div>
+              <select class="form-control" [(ngModel)]="genero" name="genero">
+                  <option value="ACAO">Ação</option>
+                  <option value="AVENTURA">Aventura</option>
+                  <option value="FICCAO">Ficção</option>
+                  <option value="ROMANCE">Romance</option>
+                  <option value="DRAMA">Drama</option>
+                  <option value="OUTRO">Outro</option>
+              </select>
+          </div>
+          <div class="col-3">
+              <div class="mb-1">
+                  Ano de Lançamento
+              </div>
+              <input type="number" class="form-control" [(ngModel)]="anoLancamento" name="anoLancamento">
+          </div>
+      </div>
+      <div class="d-flex flex-row-reverse mb-3">
+          <button class="btn btn-primary" (click)="adicionarLivro()">Adicionar Livro</button>
+      </div>
+  </div>
+  <div class="container">
+      <h3>Livros Cadastrados</h3>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Nome</th>
+                  <th>Autor</th>
+                  <th>Gênero</th>
+                  <th>Ano de Lançamento</th>
+                  <th>Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let livro of listaLivros; let i = index">
+                  <td>{{ livro.nome }}</td>
+                  <td>{{ livro.autor }}</td>
+                  <td>{{ livro.genero }}</td>
+                  <td>{{ livro.anoLancamento }}</td>
+                  <td>
+                      <a href="#" (click)="excluirLivro(i)" class="btn btn-danger">Excluir</a>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
