@@ -27,4 +27,8 @@ export class ListaService {
   adicionarLivro(novoLivro: ICadastroLivros): void {
     this.livros.push(novoLivro);
   }
+
+  atualizarLivro(index: number, livroAtualizado: ICadastroLivros): void {
+    this.livros[index] = livroAtualizado;
+  }
 }

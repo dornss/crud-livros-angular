@@ -9,6 +9,7 @@ import { ListaService } from './lista.component.service';
 })
 export class ListaComponent implements OnInit {
   listaLivros: ICadastroLivros[] = [];
+  livroEditIndex: number | null = null;
 
   constructor(private listaService: ListaService) {}
 
@@ -18,5 +19,22 @@ export class ListaComponent implements OnInit {
 
   excluirLivro(index: number): void {
     this.listaService.excluirLivro(index);
+  }
+
+  editarLivro(index: number): void {
+    this.livroEditIndex = index;
+  }
+
+  salvarEdicao(index: number): void {
+    if (index !== null) {
+      this.livroEditIndex = null;
+      // Adicione aqui a lógica para salvar as alterações no serviço, se necessário
+      this.listaService.atualizarLivro(index, this.listaLivros[index]);
+    }
+  }
+
+  cancelarEdicao(): void {
+    this.livroEditIndex = null;
+    // Adicione aqui a lógica para cancelar a edição, se necessário
   }
 }

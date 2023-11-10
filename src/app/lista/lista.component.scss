@@ -1,7 +1,8 @@
-.inputs {
+.actions {
   display: flex;
-  // align-items: center;
-  justify-content: center;
-  gap: 4rem;
-  margin-bottom: 1.5rem;
+  gap: 8px; /* Ajuste o valor conforme necessário para o espaçamento desejado */
+}
+
+.actions a {
+  margin-right: 8px; /* Ajuste o valor conforme necessário para o espaçamento desejado */
 }

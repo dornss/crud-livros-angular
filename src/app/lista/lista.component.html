@@ -1,27 +1,54 @@
 <div class="container-fluid">
   <div class="container">
-      <h3>Livros Cadastrados</h3>
-      <table class="table">
-          <thead>
-              <tr>
-                  <th>Nome</th>
-                  <th>Autor</th>
-                  <th>Gênero</th>
-                  <th>Ano de Lançamento</th>
-                  <th>Ações</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let livro of listaLivros; let i = index">
-                  <td>{{ livro.nome }}</td>
-                  <td>{{ livro.autor }}</td>
-                  <td>{{ livro.genero }}</td>
-                  <td>{{ livro.anoLancamento }}</td>
-                  <td>
-                      <a href="#" (click)="excluirLivro(i)" class="btn btn-danger">Excluir</a>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
+    <h3>Livros Cadastrados</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Autor</th>
+          <th>Gênero</th>
+          <th>Ano de Lançamento</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let livro of listaLivros; let i = index">
+          <ng-container *ngIf="livroEditIndex !== i">
+            <tr>
+              <td>{{ livro.nome }}</td>
+              <td>{{ livro.autor }}</td>
+              <td>{{ livro.genero }}</td>
+              <td>{{ livro.anoLancamento }}</td>
+              <td class="actions">
+                <a href="#" (click)="excluirLivro(i)" class="btn btn-danger">Excluir</a>
+                <a href="#" (click)="editarLivro(i)" class="btn btn-primary">Editar</a>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="livroEditIndex === i">
+            <tr>
+              <td><input type="text" [(ngModel)]="listaLivros[i].nome" /></td>
+              <td><input type="text" [(ngModel)]="listaLivros[i].autor" /></td>
+              <td>
+                <select class="form-control" [(ngModel)]="listaLivros[i].genero">
+                  <option value="Ação">Ação</option>
+                  <option value="Aventura">Aventura</option>
+                  <option value="Ficção">Ficção</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </td>
+              <td><input type="number" [(ngModel)]="listaLivros[i].anoLancamento" /></td>
+              <td class="actions">
+                <a href="#" (click)="excluirLivro(i)" class="btn btn-danger">Excluir</a>
+                <a href="#" (click)="salvarEdicao(i)" class="btn btn-success">Salvar</a>
+                <a href="#" (click)="cancelarEdicao()" class="btn btn-warning">Cancelar</a>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
 </div>
