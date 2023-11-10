@@ -35,6 +35,8 @@ export class ListaService {
   }
 
   atualizarLivro(index: number, livroAtualizado: ICadastroLivros): void {
+    const livroAntigo = this.livros[index];
     this.livros[index] = livroAtualizado;
+    this.historicoService.adicionarEvento('Livro editado', livroAntigo.nome);
   }
 }
