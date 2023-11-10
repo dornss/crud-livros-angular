@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICadastroLivros } from '../model/ICadastroLivros';
+import { HistoricoService } from '../historico/historico.component.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +21,17 @@ export class ListaService {
     },
   ];
 
+  constructor(private historicoService: HistoricoService) {}
+
   excluirLivro(index: number): void {
+    const livroExcluido = this.livros[index];
     this.livros.splice(index, 1);
+    this.historicoService.adicionarEvento('Livro excluído', livroExcluido.nome);
   }
 
   adicionarLivro(novoLivro: ICadastroLivros): void {
     this.livros.push(novoLivro);
+    this.historicoService.adicionarEvento('Livro adicionado', novoLivro.nome);
   }
 
   atualizarLivro(index: number, livroAtualizado: ICadastroLivros): void {

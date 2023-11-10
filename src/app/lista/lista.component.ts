@@ -28,13 +28,11 @@ export class ListaComponent implements OnInit {
   salvarEdicao(index: number): void {
     if (index !== null) {
       this.livroEditIndex = null;
-      // Adicione aqui a lógica para salvar as alterações no serviço, se necessário
       this.listaService.atualizarLivro(index, this.listaLivros[index]);
     }
   }
 
   cancelarEdicao(): void {
     this.livroEditIndex = null;
-    // Adicione aqui a lógica para cancelar a edição, se necessário
   }
 }

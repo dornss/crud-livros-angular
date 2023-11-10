@@ -5,17 +5,20 @@ import { AppComponent } from './app.component';
 import { ListaComponent} from './lista/lista.component';
 import { FormsModule } from '@angular/forms';
 import { FormularioComponent } from './formulario/formulario.component';
+import { HistoricoComponent } from './historico/historico.component';
+import { HistoricoService } from './historico/historico.component.service';
 @NgModule({
   declarations: [
     AppComponent,
     ListaComponent,
-    FormularioComponent
+    FormularioComponent,
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [HistoricoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

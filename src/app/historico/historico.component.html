@@ -1,0 +1,10 @@
+<div class="container">
+  <h3>Histórico de Modificações</h3>
+  <ul>
+    <li *ngFor="let evento of historico">
+      {{ evento.dataHora }} - {{ evento.acao }} {{ evento.livro ? '(' + evento.livro + ')' : '' }}
+    </li>
+  </ul>
+
+  <button class="btn btn-warning" (click)="limparHistorico()">Limpar Histórico</button>
+</div>
